@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-const App = () => {
-  return <div>Hello world</div>;
+const Home = () => {
+  return (
+    <h1>RPG Character Creator</h1>
+  );
 };
 
-export default App;
+export default Home;
