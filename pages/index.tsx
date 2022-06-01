@@ -1,9 +1,24 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 const Home = () => {
+
+  const TitleBackground = styled.div`
+    background-color: grey;
+
+  `
+  const Title = styled.h1`
+    font-size: 3rem;
+    text-align: center;
+  `
   return (
-    <h1>RPG Character Creator</h1>
-  );
+    <>
+    <TitleBackground>
+        <Title>RPG Character Creator</Title>
+    </TitleBackground>
+      
+    </>
+      );
 };
 
 export default Home;
