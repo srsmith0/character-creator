@@ -1,7 +1,7 @@
 import react, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const AddCharacter = () => {
+const ClassRadios = () => {
   const [profession, setProfession] = useState([]);
   const [selectedClass, setSelectedClass] = useState("");
   
@@ -52,4 +52,4 @@ const AddCharacter = () => {
   );
 };
 
-export default AddCharacter;
+export default ClassRadios;
