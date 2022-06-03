@@ -1,20 +1,18 @@
 import react, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const ClassRadios = () => {
-  const [profession, setProfession] = useState([]);
-  const [selectedClass, setSelectedClass] = useState("");
+const ClassRadios = ({ profession, setProfession, selectedClass, setSelectedClass }) => {
   
   useEffect(() => {
     axios.get("https://www.dnd5eapi.co/api/classes/")
     .then((res) => {
-      let arr = res.data.results;
-      //use res.data.results then for each in array, put .name into new array
-      let profArray = [];
-      for (let i = 0; i < arr.length; i++) {
-        profArray.push(arr[i].name);
+      let classes = res.data.results;
+      let classArray = [];
+      //only takes name from GET request and creates new array
+      for (let i = 0; i < classes.length; i++) {
+        classArray.push(classes[i].name);
       };
-      setProfession(profArray);
+      setProfession(classArray);
       console.log(profession);
     });
   }, []);
@@ -26,7 +24,6 @@ const ClassRadios = () => {
 
   const handleClassChange = (e) => {
     const newClass = e.target.value;
-    console.log(newClass);
     setSelectedClass(newClass);
   }
           
