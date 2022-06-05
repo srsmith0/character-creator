@@ -1,46 +1,46 @@
-import react, { useEffect, useState } from 'react';
-import axios from 'axios';
+import * as React from 'react';
+import axios from '../node_modules/axios/index';
 
-const ClassRadios = ({ profession, setProfession, selectedClass, setSelectedClass }) => {
+const ClassRadios = ({ klass, setKlass, selectedKlass, setSelectedKlass }) => {
   
-  useEffect(() => {
+  React.useEffect(() => {
     axios.get("https://www.dnd5eapi.co/api/classes/")
     .then((res) => {
-      let classes = res.data.results;
-      let classArray = [];
+      let klasses = res.data.results;
+      let klassArray = [];
       //only takes name from GET request and creates new array
-      for (let i = 0; i < classes.length; i++) {
-        classArray.push(classes[i].name);
+      for (let i = 0; i < klasses.length; i++) {
+        klassArray.push(klasses[i].name);
       };
-      setProfession(classArray);
-      console.log(profession);
+      setKlass(klassArray);
+      console.log(klass);
     });
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(selectedClass)
+    console.log(selectedKlass)
   }
 
-  const handleClassChange = (e) => {
-    const newClass = e.target.value;
-    setSelectedClass(newClass);
+  const handleKlassChange = (e) => {
+    const newKlass = e.target.value;
+    setSelectedKlass(newKlass);
   }
           
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {profession.map((prof, index) => (
+        {klass.map((klass, index) => (
             <label key={index}>
               <input
-                value={prof}
-                id={prof}
-                name="char_class"
+                value={klass}
+                id={klass}
+                name="char_klass"
                 type="radio"
-                checked={selectedClass === prof}
-                onChange={handleClassChange}
+                checked={selectedKlass === klass}
+                onChange={handleKlassChange}
                 />
-            {prof}
+            {klass}
             </label>
           ))}
         <input type="submit" />

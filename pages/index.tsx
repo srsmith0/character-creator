@@ -13,10 +13,7 @@ const Home = () => {
   `
   return (
     <>
-    <TitleBackground>
-        <Title>RPG Character Creator</Title>
-    </TitleBackground>
-      
+      <Title>RPG Character Creator</Title>
     </>
       );
 };
