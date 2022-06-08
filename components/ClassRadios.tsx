@@ -29,7 +29,7 @@ const ClassRadios = ({ klass, setKlass, selectedKlass, setSelectedKlass }) => {
           
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}> */}
         {klass.map((klass, index) => (
             <label key={index}>
               <input
@@ -43,8 +43,8 @@ const ClassRadios = ({ klass, setKlass, selectedKlass, setSelectedKlass }) => {
             {klass}
             </label>
           ))}
-        <input type="submit" />
-      </form>
+        {/* <input type="submit" /> */}
+      {/* </form> */}
     </>
   );
 };

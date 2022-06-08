@@ -8,8 +8,15 @@ const AddCharacter = () => {
   const [alignment, setAlignment] = React.useState([]);
   const [selectedAlignment, setSelectedAlignment] = React.useState("");
           
+  const handleSubmit = (e) => {
+    e.preventDefault;
+    console.log(e)
+    debugger;
+  }
+
   return (
     <>
+      <form onSubmit={handleSubmit}>
       <ClassRadios
         klass={klass}
         setKlass={setKlass}
@@ -21,7 +28,9 @@ const AddCharacter = () => {
         setAlignment={setAlignment}
         selectedAlignment={selectedAlignment}
         setSelectedAlighment={setSelectedAlignment}
-      />
+        />
+        <input type="submit" />
+      </form>
     </>
   );
 };

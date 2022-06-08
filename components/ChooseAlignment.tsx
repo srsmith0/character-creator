@@ -12,24 +12,29 @@ const ChooseAlignment = ({ alignment, setAlignment, selectedAlignment, setSelect
       });
   }, []);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
+  }
   const createAlignmentNames = (alignments) => {
     let alignmentArray = [];
     for (let i = 0; i < alignments.length; i++) {
       alignmentArray.push(alignments[i].name);
     };
-    return alignmentArray.map(align => <option key={align} onClick={setSelectedAlighment(align)}>{align}</option>)
+    return (
+      <select>
+        {alignmentArray.map(align => <option key={align} value={align}>{align}</option>)}
+       </select>
+       ) 
   };
 
   return (
     <>
-      <div class="dropdown">
-      <button class="dropbtn">Alignment</button>
-        <div class="dropdown-content">
+    
+    {createAlignmentNames(alignment)}
 
-            {createAlignmentNames(alignment)}
-          {console.log(selectedAlignment)}
-      </div>
-</div>
+
+
     </>
   )
 };
