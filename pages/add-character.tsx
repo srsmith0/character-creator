@@ -12,7 +12,7 @@ const AddCharacter = () => {
   let char = {
     klass,
     alignment: selectedAlignment,
-    
+
   };
           
   const handleSubmit = (e) => {
@@ -23,18 +23,18 @@ const AddCharacter = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-      <ClassRadios
-        klass={klass}
-        setKlass={setKlass}
-        selectedKlass={selectedKlass}
-        setSelectedKlass={setSelectedKlass}
-      />
-      <ChooseAlignment
-        alignment={alignment}
-        setAlignment={setAlignment}
-        selectedAlignment={selectedAlignment}
-        setSelectedAlighment={setSelectedAlignment}
+        <ClassRadios
+          klass={klass}
+          setKlass={setKlass}
+          selectedKlass={selectedKlass}
+          setSelectedKlass={setSelectedKlass}
         />
+        <ChooseAlignment
+          alignment={alignment}
+          setAlignment={setAlignment}
+          selectedAlignment={selectedAlignment}
+          setSelectedAlighment={setSelectedAlignment}
+          />
         <input type="submit" />
       </form>
     </>
