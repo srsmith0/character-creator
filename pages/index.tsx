@@ -13,8 +13,11 @@ const Home = () => {
   `
   return (
     <>
-      <Title>RPG Character Creator</Title>
+      <TitleBackground>
+        <Title>RPG Character Creator</Title>
+      </TitleBackground>
     </>
+      
       );
 };
 

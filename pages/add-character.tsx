@@ -7,11 +7,17 @@ const AddCharacter = () => {
   const [selectedKlass, setSelectedKlass] = React.useState("");
   const [alignment, setAlignment] = React.useState([]);
   const [selectedAlignment, setSelectedAlignment] = React.useState("");
+
+  
+  let char = {
+    klass,
+    alignment: selectedAlignment,
+    
+  };
           
   const handleSubmit = (e) => {
     e.preventDefault;
-    console.log(e)
-    debugger;
+    console.log(selectedAlignment)
   }
 
   return (

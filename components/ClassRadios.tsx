@@ -13,7 +13,6 @@ const ClassRadios = ({ klass, setKlass, selectedKlass, setSelectedKlass }) => {
         klassArray.push(klasses[i].name);
       };
       setKlass(klassArray);
-      console.log(klass);
     });
   }, []);
 
