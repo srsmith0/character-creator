@@ -1,36 +1,37 @@
 import * as React from 'react';
 import axios from '../node_modules/axios/index';
 
-const ChooseAlignment = ({ alignment, setAlignment, selectedAlignment, setSelectedAlighment }) => {
+const ChooseAlignment = ({ alignment, setAlignment }) => {
+  const [alignments, setAlignments] = React.useState([]);
 
   React.useEffect(() => {
     axios.get("https://www.dnd5eapi.co/api/alignments/")
       .then(res => {
         let alignmentsData = res.data.results;
-        setAlignment(alignmentsData);
+        setAlignments(alignmentsData);
       });
   }, []);
 
-  const createAlignmentNames = (alignments) => {
+  const createAlignmentNames = () => {
     let alignmentArray = [];
     for (let i = 0; i < alignments.length; i++) {
       alignmentArray.push(alignments[i].name);
     };
     return (
-      <select value={selectedAlignment} onChange={handleChange}>
+      <select value={alignment} onChange={handleChange}>
         {alignmentArray.map(align => <option id={align} key={align} value={align}>{align}</option>)}
        </select>
        ) 
   };
         
   const handleChange = (e) => {
-    setSelectedAlighment(e.target.value);
+    setAlignment(e.target.value);
   };
 
   return (
     <>
     <div>Choose Alignment:</div>
-    {createAlignmentNames(alignment)}
+    {createAlignmentNames()}
     </>
   )
 };

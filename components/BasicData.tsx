@@ -1,7 +1,8 @@
+import axios from 'axios';
 import * as React from 'react';
-import { getSystemErrorName } from 'util';
+import ChooseRace from './ChooseRace';
 
-const BasicData = ({name, setName, race, setRace, sex, setSex}) => {
+const BasicData = ({ name, setName, race, setRace, setSex }) => {
 
   const nameInput = () => {
     return (
@@ -43,6 +44,9 @@ const BasicData = ({name, setName, race, setRace, sex, setSex}) => {
     <>
       {nameInput()}
       {chooseSex()}
+      <ChooseRace
+        race={race}
+        setRace={setRace} />
     </>
   )
 };

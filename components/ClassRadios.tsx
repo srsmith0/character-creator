@@ -1,7 +1,8 @@
 import * as React from 'react';
 import axios from '../node_modules/axios/index';
-
-const ClassRadios = ({ klass, setKlass, selectedKlass, setSelectedKlass }) => {
+//TODO: use index API call to get all class info for character creation
+const ClassRadios = ({ klass, setKlass }) => {
+  const [klasses, setKlasses] = React.useState([]);
   
   React.useEffect(() => {
     axios.get("https://www.dnd5eapi.co/api/classes/")
@@ -12,41 +13,33 @@ const ClassRadios = ({ klass, setKlass, selectedKlass, setSelectedKlass }) => {
       for (let i = 0; i < klasses.length; i++) {
         klassArray.push(klasses[i].name);
       };
-      setKlass(klassArray);
+      setKlasses(klassArray);
     });
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(selectedKlass)
-  }
-
   const handleKlassChange = (e) => {
     const newKlass = e.target.value;
-    setSelectedKlass(newKlass);
+    setKlass(newKlass);
   }
           
   return (
     <>
-      {/* <form onSubmit={handleSubmit}> */}
       <div>Choose Class:</div>
-      {klass.map((klass, index) => (
-        <div key={klass}>
+      {klasses.map((kla, index) => (
+        <div key={kla}>
             <input
-              value={klass}
-              id={klass}
-              name="char_klass"
+              value={kla}
+              id={kla}
+              name="charKlass"
               type="radio"
-              checked={selectedKlass === klass}
+              checked={klass === kla}
               onChange={handleKlassChange}
           />
-            <label key={index} htmlFor={klass}>
-            {klass}
+            <label key={index} htmlFor={kla}>
+            {kla}
             </label>
           </div>
           ))}
-        {/* <input type="submit" /> */}
-      {/* </form> */}
     </>
   );
 };

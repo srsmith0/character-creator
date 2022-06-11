@@ -6,19 +6,16 @@ import BasicData from '../components/BasicData';
 const AddCharacter = () => {
   const [name, setName] = React.useState("");
   const [sex, setSex] = React.useState("");
-  const [race, setRace] = React.useState("");
-  const [klass, setKlass] = React.useState([]);
-  const [selectedKlass, setSelectedKlass] = React.useState("Chaotic Evil");
-  const [alignment, setAlignment] = React.useState([]);
-  const [selectedAlignment, setSelectedAlignment] = React.useState("");
-
+  const [race, setRace] = React.useState("Dragonborn");
+  const [klass, setKlass] = React.useState("");
+  const [alignment, setAlignment] = React.useState("Chaotic Evil");
   
   let char = {
     name,
     race,
     sex,
-    klass: selectedKlass,
-    alignment: selectedAlignment,
+    klass,
+    alignment,
 
   };
           
@@ -26,15 +23,15 @@ const AddCharacter = () => {
     e.preventDefault;
     console.log(char)
     debugger;
+    document.getElementById("charForm").reset()
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form id="charForm" onSubmit={handleSubmit}>
         <BasicData
           name={name}
           setName={setName}
-          sex={sex}
           setSex={setSex}
           race={race}
           setRace={setRace}
@@ -42,14 +39,10 @@ const AddCharacter = () => {
         <ClassRadios
           klass={klass}
           setKlass={setKlass}
-          selectedKlass={selectedKlass}
-          setSelectedKlass={setSelectedKlass}
         />
         <ChooseAlignment
           alignment={alignment}
           setAlignment={setAlignment}
-          selectedAlignment={selectedAlignment}
-          setSelectedAlighment={setSelectedAlignment}
           />
         <input type="submit" />
       </form>
