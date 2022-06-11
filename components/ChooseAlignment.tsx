@@ -29,6 +29,7 @@ const ChooseAlignment = ({ alignment, setAlignment, selectedAlignment, setSelect
 
   return (
     <>
+    <div>Choose Alignment:</div>
     {createAlignmentNames(alignment)}
     </>
   )

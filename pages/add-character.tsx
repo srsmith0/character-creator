@@ -5,6 +5,7 @@ import BasicData from '../components/BasicData';
 
 const AddCharacter = () => {
   const [name, setName] = React.useState("");
+  const [sex, setSex] = React.useState("");
   const [race, setRace] = React.useState("");
   const [klass, setKlass] = React.useState([]);
   const [selectedKlass, setSelectedKlass] = React.useState("Chaotic Evil");
@@ -15,6 +16,7 @@ const AddCharacter = () => {
   let char = {
     name,
     race,
+    sex,
     klass: selectedKlass,
     alignment: selectedAlignment,
 
@@ -23,7 +25,7 @@ const AddCharacter = () => {
   const handleSubmit = (e) => {
     e.preventDefault;
     console.log(char)
-    //debugger;
+    debugger;
   }
 
   return (
@@ -32,6 +34,8 @@ const AddCharacter = () => {
         <BasicData
           name={name}
           setName={setName}
+          sex={sex}
+          setSex={setSex}
           race={race}
           setRace={setRace}
         />

@@ -29,18 +29,21 @@ const ClassRadios = ({ klass, setKlass, selectedKlass, setSelectedKlass }) => {
   return (
     <>
       {/* <form onSubmit={handleSubmit}> */}
-        {klass.map((klass, index) => (
-            <label key={index}>
-              <input
-                value={klass}
-                id={klass}
-                name="char_klass"
-                type="radio"
-                checked={selectedKlass === klass}
-                onChange={handleKlassChange}
-                />
+      <div>Choose Class:</div>
+      {klass.map((klass, index) => (
+        <div key={klass}>
+            <input
+              value={klass}
+              id={klass}
+              name="char_klass"
+              type="radio"
+              checked={selectedKlass === klass}
+              onChange={handleKlassChange}
+          />
+            <label key={index} htmlFor={klass}>
             {klass}
             </label>
+          </div>
           ))}
         {/* <input type="submit" /> */}
       {/* </form> */}
