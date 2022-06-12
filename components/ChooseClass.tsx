@@ -1,9 +1,9 @@
 import * as React from 'react';
 import axios from 'axios';
-//TODO: use index API call to get all class info for character creation
+
 const ChooseClass = ({ klass, setKlass }) => {
   const [klasses, setKlasses] = React.useState([]);
-  const [klassProficiencies, setKlassProficiencies] = React.useState({})
+  const [klassData, setKlassData] = React.useState({})
   
   React.useEffect(() => {
     axios.get("https://www.dnd5eapi.co/api/classes/")
@@ -16,24 +16,31 @@ const ChooseClass = ({ klass, setKlass }) => {
       };
       setKlasses(klassArray);
     });
+
   }, []);
 
   const handleKlassChange = (e) => {
     const newKlass = e.target.value;
     setKlass(newKlass);
-    let proficiencies = {}
-    let index = newKlass.toLowerCase();
-    klass != "" ? axios.get(`https://www.dnd5eapi.co/api/classes/${index}`)
-      .then((res) => {
-        console.log(res.data);
-      }
-    ) : console.log("no klass")
-      
-
+    getKlassData(newKlass)
   };
 
-  const chooseKlassProficency = () => {
+  const getKlassData = (selectedKlass) => {
+    let index = selectedKlass.toLowerCase();
+    axios.get(`https://www.dnd5eapi.co/api/classes/${index}`)
+      .then((res) => {
+        setKlassData(res.data);
+      }
+    )
+  };
 
+  const displayKlassData = () => {
+    console.log(klassData)
+    return (
+      <>
+        <h1>{klassData.name}{klassData.hit_die}</h1>
+      </>
+    )
   }
           
   return (
@@ -54,6 +61,7 @@ const ChooseClass = ({ klass, setKlass }) => {
           </label>
           </div>
           ))}
+          {displayKlassData()}
     </>
   );
 };
