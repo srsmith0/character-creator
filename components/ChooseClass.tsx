@@ -1,8 +1,9 @@
 import * as React from 'react';
-import axios from '../node_modules/axios/index';
+import axios from 'axios';
 //TODO: use index API call to get all class info for character creation
-const ClassRadios = ({ klass, setKlass }) => {
+const ChooseClass = ({ klass, setKlass }) => {
   const [klasses, setKlasses] = React.useState([]);
+  const [klassProficiencies, setKlassProficiencies] = React.useState({})
   
   React.useEffect(() => {
     axios.get("https://www.dnd5eapi.co/api/classes/")
@@ -20,6 +21,19 @@ const ClassRadios = ({ klass, setKlass }) => {
   const handleKlassChange = (e) => {
     const newKlass = e.target.value;
     setKlass(newKlass);
+    let proficiencies = {}
+    let index = newKlass.toLowerCase();
+    klass != "" ? axios.get(`https://www.dnd5eapi.co/api/classes/${index}`)
+      .then((res) => {
+        console.log(res.data);
+      }
+    ) : console.log("no klass")
+      
+
+  };
+
+  const chooseKlassProficency = () => {
+
   }
           
   return (
@@ -37,11 +51,11 @@ const ClassRadios = ({ klass, setKlass }) => {
           />
             <label key={index} htmlFor={kla}>
             {kla}
-            </label>
+          </label>
           </div>
           ))}
     </>
   );
 };
 
-export default ClassRadios;
+export default ChooseClass;

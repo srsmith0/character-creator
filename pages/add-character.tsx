@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ClassRadios from '../components/ClassRadios';
+import ChooseClass from '../components/ChooseClass';
 import ChooseAlignment from '../components/ChooseAlignment';
 import BasicData from '../components/BasicData';
 
@@ -36,14 +36,14 @@ const AddCharacter = () => {
           race={race}
           setRace={setRace}
         />
-        <ClassRadios
-          klass={klass}
-          setKlass={setKlass}
-        />
         <ChooseAlignment
           alignment={alignment}
           setAlignment={setAlignment}
-          />
+        />
+        <ChooseClass
+          klass={klass}
+          setKlass={setKlass}
+        />
         <input type="submit" />
       </form>
     </>
