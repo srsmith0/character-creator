@@ -1,21 +1,26 @@
+import Link from 'next/link';
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, {createGlobalStyle} from 'styled-components';
 
 const Home = () => {
 
-  const TitleBackground = styled.div`
-    background-color: grey;
-
-  `
+  const GlobalStyle = createGlobalStyle`
+  html,
+  body {
+    background-color: #ee3e29;
+  }
+`
   const Title = styled.h1`
+    font-family: 'MedievalSharp', cursive;
     font-size: 3rem;
     text-align: center;
   `
   return (
     <>
-      <TitleBackground>
-        <Title>RPG Character Creator</Title>
-      </TitleBackground>
+      <Title>Dungeons & Dragons</Title>
+      <Title>Character Creator</Title>
+      <Link href="/add-character"><button>Get Started!</button></Link>
+      <GlobalStyle />
     </>
       
       );

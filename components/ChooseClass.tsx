@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const ChooseClass = ({ klass, setKlass }) => {
   const [klasses, setKlasses] = React.useState([]);
-  const [klassData, setKlassData] = React.useState({})
+  const [klassData, setKlassData] = React.useState('')
   
   React.useEffect(() => {
     axios.get("https://www.dnd5eapi.co/api/classes/")
@@ -35,12 +35,15 @@ const ChooseClass = ({ klass, setKlass }) => {
   };
 
   const displayKlassData = () => {
-    console.log(klassData)
-    return (
-      <>
-        <h1>{klassData.name}{klassData.hit_die}</h1>
-      </>
-    )
+    if (klassData != '') {
+      return (
+        <>
+          <h1>{klassData.name}{klassData.hit_die}</h1>
+        </>
+      );
+    } else {
+      return
+    }
   }
           
   return (
