@@ -16,7 +16,7 @@ const Home = () => {
       <TitleContainer>
       <Title>Dungeons & Dragons <br /> Character Creator</Title>
       <Center>
-        <Link href="/add-character"><GetStarted>Get Started</GetStarted></Link>
+        <Link href="/create-character"><GetStarted>Get Started</GetStarted></Link>
       </Center>
       </TitleContainer>
       </Main>

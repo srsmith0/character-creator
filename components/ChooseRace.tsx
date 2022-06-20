@@ -4,10 +4,13 @@ import axios from 'axios';
 const ChooseRace = ({race, setRace}) => {
   const [raceArray, setRaceArray] = React.useState([]);
   
+  //TODO: make basic picks and add more info once MVP
+  //TODO: pick race, then make modal giving details and button to add.  Racial abilities + language
   React.useEffect(() => {
     axios.get("https://www.dnd5eapi.co/api/races/")
       .then(res => {
         let races = res.data.results;
+        debugger;
         let racesArray = [];
         //only takes name from GET request and creates new array
         for (let i = 0; i < races.length; i++) {

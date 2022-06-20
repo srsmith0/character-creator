@@ -21,8 +21,6 @@ const AddCharacter = () => {
           
   const handleSubmit = (e) => {
     e.preventDefault;
-    console.log(char)
-    debugger;
     document.getElementById("charForm").reset()
   }
 
