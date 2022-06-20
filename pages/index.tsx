@@ -4,27 +4,66 @@ import styled, {createGlobalStyle} from 'styled-components';
 
 const Home = () => {
 
+  return (
+    <>
+      <Main>
+      <TitleContainer>
+      <Title>Dungeons & Dragons <br /> Character Creator</Title>
+      <Center>
+        <Link href="/add-character"><GetStarted>Get Started</GetStarted></Link>
+      </Center>
+      </TitleContainer>
+      </Main>
+      <GlobalStyle />
+    </>
+      
+      );
+};
+
   const GlobalStyle = createGlobalStyle`
   html,
   body {
     background-color: #ee3e29;
   }
 `
-  const Title = styled.h1`
-    font-family: 'MedievalSharp', cursive;
-    font-size: 3rem;
-    text-align: center;
-  `
-  return (
-    <>
-      <Title>Dungeons & Dragons</Title>
-      <Title>Character Creator</Title>
-      <Link href="/add-character"><button>Get Started!</button></Link>
-      <GlobalStyle />
-    </>
-      
-      );
-};
+
+const Main = styled.div`
+  position: relative;
+  height: 85vh;
+
+`
+const TitleContainer = styled.div`
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 75%;
+`
+const Title = styled.h1`
+  font-family: 'MedievalSharp', cursive;
+  font-size: 3rem;
+  text-align: center;
+`
+const GetStarted = styled.button`
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1rem;
+  color:#dadde0; 
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 3px;
+  background-color: #242526;
+  &:hover {
+    background-color: #2f3030;
+  };
+`
+
+const Center = styled.div`
+  text-align: center;
+`
 
 // Class data response:
 // {
