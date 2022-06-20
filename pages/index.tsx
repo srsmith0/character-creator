@@ -4,6 +4,12 @@ import styled, {createGlobalStyle} from 'styled-components';
 
 const Home = () => {
 
+
+  //TODO: add abilities component, If you want to save time or don’t like the idea of randomly determining ability scores, you can choose from a fixed list (15, 14, 13, 12, 10, 8).
+  //option to roll or standard array. manual/random - roll is 4 d6 then take 3 highest, so random math formula
+  //create dice rolling componenent, roll each 'group' then assign to abilities
+  //once rolled and assigned, add any modifiers from race or class
+  //TODO: can add background, but that will be a last addition
   return (
     <>
       <Main>

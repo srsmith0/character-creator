@@ -5,6 +5,8 @@ const ChooseClass = ({ klass, setKlass }) => {
   const [klasses, setKlasses] = React.useState([]);
   const [klassData, setKlassData] = React.useState('')
   
+
+  //TODO: make modal giving information on classes, add class button.  Pick proficiencies from there
   React.useEffect(() => {
     axios.get("https://www.dnd5eapi.co/api/classes/")
     .then((res) => {
