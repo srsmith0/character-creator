@@ -10,7 +10,6 @@ const ChooseRace = ({race, setRace}) => {
     axios.get("https://www.dnd5eapi.co/api/races/")
       .then(res => {
         let races = res.data.results;
-        debugger;
         let racesArray = [];
         //only takes name from GET request and creates new array
         for (let i = 0; i < races.length; i++) {

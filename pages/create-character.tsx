@@ -2,6 +2,7 @@ import * as React from 'react';
 import ChooseClass from '../components/ChooseClass';
 import ChooseAlignment from '../components/ChooseAlignment';
 import BasicData from '../components/BasicData';
+import DiceRoller from '../utils/DiceRoller';
 
 const AddCharacter = () => {
   const [name, setName] = React.useState("");
@@ -44,6 +45,7 @@ const AddCharacter = () => {
         />
         <input type="submit" />
       </form>
+      <DiceRoller />
     </>
   );
 };
