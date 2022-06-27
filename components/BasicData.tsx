@@ -1,8 +1,9 @@
-import axios from 'axios';
 import * as React from 'react';
+import styled from 'styled-components';
+import ChooseAlignment from './ChooseAlignment';
 import ChooseRace from './ChooseRace';
 
-const BasicData = ({ name, setName, race, setRace, setSex }) => {
+const BasicData = ({ name, setName, race, setRace, setSex, alignment, setAlignment }) => {
 
   const nameInput = () => {
     return (
@@ -42,13 +43,30 @@ const BasicData = ({ name, setName, race, setRace, setSex }) => {
 
   return (
     <>
-      {nameInput()}
-      {chooseSex()}
-      <ChooseRace
-        race={race}
-        setRace={setRace} />
+      <NameCenter>
+        {nameInput()}
+        {chooseSex()}
+      </NameCenter>  
+      <AlignClass>
+        <ChooseRace
+          race={race}
+          setRace={setRace}
+        />
+        <ChooseAlignment
+          alignment={alignment}
+          setAlignment={setAlignment}
+        />
+      </AlignClass>
     </>
   )
 };
 
 export default BasicData;
+
+const NameCenter = styled.div`
+  text-align: center;
+`;
+const AlignClass = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;

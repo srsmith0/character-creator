@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 
 const ChooseClass = ({ klass, setKlass }) => {
@@ -50,9 +51,10 @@ const ChooseClass = ({ klass, setKlass }) => {
           
   return (
     <>
-      <div>Choose Class:</div>
+      <ChooseKlass>Choose Class:</ChooseKlass>
+      <ClassRadios>
       {klasses.map((kla, index) => (
-        <div key={kla}>
+        <Klass key={kla}>
             <input
               value={kla}
               id={kla}
@@ -64,11 +66,27 @@ const ChooseClass = ({ klass, setKlass }) => {
             <label key={index} htmlFor={kla}>
             {kla}
           </label>
-          </div>
-          ))}
+          </Klass>
+      ))}
+        </ClassRadios>
           {displayKlassData()}
     </>
   );
 };
 
 export default ChooseClass;
+
+const ChooseKlass = styled.div`
+  text-align: center;
+  padding-bottom: 2rem;
+`;
+
+const ClassRadios = styled.div`
+  display: flex;
+  flex-flow: wrap;
+  text-align: center;
+`;
+
+const Klass = styled.div`
+  width: 25%;
+`;

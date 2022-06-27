@@ -1,6 +1,6 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import ChooseClass from '../components/ChooseClass';
-import ChooseAlignment from '../components/ChooseAlignment';
 import BasicData from '../components/BasicData';
 import DiceRoller from '../utils/DiceRoller';
 
@@ -28,22 +28,22 @@ const AddCharacter = () => {
   return (
     <>
       <form id="charForm" onSubmit={handleSubmit}>
+        <FormatText>
         <BasicData
           name={name}
           setName={setName}
           setSex={setSex}
           race={race}
           setRace={setRace}
-        />
-        <ChooseAlignment
           alignment={alignment}
           setAlignment={setAlignment}
-        />
+          />
         <ChooseClass
           klass={klass}
           setKlass={setKlass}
-        />
+          />
         <input type="submit" />
+      </FormatText>
       </form>
       <DiceRoller />
     </>
@@ -51,3 +51,9 @@ const AddCharacter = () => {
 };
 
 export default AddCharacter;
+
+const FormatText = styled.div`
+font-family: 'MedievalSharp', cursive;
+`;
+
+
