@@ -65,8 +65,10 @@ export default BasicData;
 
 const NameCenter = styled.div`
   text-align: center;
+  padding: 1rem;
 `;
 const AlignClass = styled.div`
   display: flex;
   justify-content: space-evenly;
+  padding: 1rem;
 `;

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const ChooseClass = ({ klass, setKlass }) => {
   const [klasses, setKlasses] = React.useState([]);
-  const [klassData, setKlassData] = React.useState('')
+  const [klassData, setKlassData] = React.useState([])
   
 
   //TODO: make modal giving information on classes, add class button.  Pick proficiencies from there
@@ -38,7 +38,7 @@ const ChooseClass = ({ klass, setKlass }) => {
   };
 
   const displayKlassData = () => {
-    if (klassData != '') {
+    if (klassData != []) {
       return (
         <>
           <h1>{klassData.name}{klassData.hit_die}</h1>
@@ -49,7 +49,8 @@ const ChooseClass = ({ klass, setKlass }) => {
     }
   }
           
-  return (
+  if (klassData != []) {
+    return (
     <>
       <ChooseKlass>Choose Class:</ChooseKlass>
       <ClassRadios>
@@ -70,15 +71,17 @@ const ChooseClass = ({ klass, setKlass }) => {
       ))}
         </ClassRadios>
           {displayKlassData()}
-    </>
-  );
+      </>
+    )
+  }
+  return <FormatText>Loading...</FormatText>;
 };
 
 export default ChooseClass;
 
 const ChooseKlass = styled.div`
   text-align: center;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 `;
 
 const ClassRadios = styled.div`
@@ -89,4 +92,9 @@ const ClassRadios = styled.div`
 
 const Klass = styled.div`
   width: 25%;
+`;
+
+const FormatText = styled.div`
+  font-family: 'MedievalSharp', cursive;
+  text-align:center;
 `;

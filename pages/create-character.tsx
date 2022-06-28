@@ -24,7 +24,7 @@ const AddCharacter = () => {
     e.preventDefault;
     document.getElementById("charForm").reset()
   }
-
+  
   return (
     <>
       <form id="charForm" onSubmit={handleSubmit}>
