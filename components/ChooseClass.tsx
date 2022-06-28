@@ -70,7 +70,6 @@ const ChooseClass = ({ klass, setKlass }) => {
           </Klass>
       ))}
         </ClassRadios>
-          {displayKlassData()}
       </>
     )
   }

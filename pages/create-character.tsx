@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ChooseClass from '../components/ChooseClass';
 import BasicData from '../components/BasicData';
 import DiceRoller from '../utils/DiceRoller';
+import Attributes from '../components/Attributes';
 
 const AddCharacter = () => {
   const [name, setName] = React.useState("");
@@ -42,10 +43,10 @@ const AddCharacter = () => {
           klass={klass}
           setKlass={setKlass}
           />
-        <input type="submit" />
+        <input text-align="center" type="submit" />
       </FormatText>
       </form>
-      <DiceRoller />
+      <Attributes klass={klass} />
     </>
   );
 };
