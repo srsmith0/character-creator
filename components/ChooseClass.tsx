@@ -36,44 +36,32 @@ const ChooseClass = ({ klass, setKlass }) => {
       }
     )
   };
-
-  const displayKlassData = () => {
-    if (klassData != []) {
-      return (
-        <>
-          <h1>{klassData.name}{klassData.hit_die}</h1>
-        </>
-      );
-    } else {
-      return
-    }
-  }
           
-  if (klassData != []) {
-    return (
-    <>
-      <ChooseKlass>Choose Class:</ChooseKlass>
-      <ClassRadios>
-      {klasses.map((kla, index) => (
-        <Klass key={kla}>
-            <input
-              value={kla}
-              id={kla}
-              name="charKlass"
-              type="radio"
-              checked={klass === kla}
-              onChange={handleKlassChange}
-          />
-            <label key={index} htmlFor={kla}>
-            {kla}
-          </label>
-          </Klass>
-      ))}
-        </ClassRadios>
-      </>
-    )
+  if (klassData === []) {
+    return <FormatText>Loading...</FormatText>;
   }
-  return <FormatText>Loading...</FormatText>;
+  return (
+  <>
+    <ChooseKlass>Choose Class:</ChooseKlass>
+    <ClassRadios>
+    {klasses.map((kla, index) => (
+      <Klass key={kla}>
+          <input
+            value={kla}
+            id={kla}
+            name="charKlass"
+            type="radio"
+            checked={klass === kla}
+            onChange={handleKlassChange}
+        />
+          <label key={index} htmlFor={kla}>
+          {kla}
+        </label>
+        </Klass>
+    ))}
+      </ClassRadios>
+    </>
+  )
 };
 
 export default ChooseClass;
