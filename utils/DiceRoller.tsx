@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 
-const DiceRoller = () => {
+const DiceRoller = ({setAtt}) => {
   
   const getRandomRoll = () => {
     return Math.ceil(Math.random() * 6);
@@ -16,10 +16,10 @@ const DiceRoller = () => {
     //drops the lowest value roll and adds the 3 highest rolls
     rollValues.sort().shift();
     let value = rollValues[0] + rollValues[1] + rollValues[2]
-    return value;
+    return setAtt(value)
   };
 
-  return <RollButton onClick={getAttributeValue}>Random</RollButton>;
+  return <RollButton onClick={getAttributeValue}>Random Value</RollButton>;
 };
 
 const RollButton = styled.button`
