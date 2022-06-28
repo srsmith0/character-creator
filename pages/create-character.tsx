@@ -20,15 +20,9 @@ const AddCharacter = () => {
     alignment,
 
   };
-          
-  const handleSubmit = (e) => {
-    e.preventDefault;
-    document.getElementById("charForm").reset()
-  }
   
   return (
     <>
-      <form id="charForm" onSubmit={handleSubmit}>
         <FormatText>
         <BasicData
           name={name}
@@ -43,9 +37,7 @@ const AddCharacter = () => {
           klass={klass}
           setKlass={setKlass}
           />
-        <input text-align="center" type="submit" />
       </FormatText>
-      </form>
       <Attributes klass={klass} />
     </>
   );
