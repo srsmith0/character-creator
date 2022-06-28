@@ -11,14 +11,17 @@ const Attributes = ({ klass }) => {
   const [charisma, setCharisma] = React.useState('');
 
   return (
+    <>
+    <AttributeHeader>Attributes:</AttributeHeader>
     <AttributeDiv>
-      <p>Strength: {strength}</p> <DiceRoller setAtt={setStrength} />
-      <p>Dexterity: {dexterity}</p> <DiceRoller setAtt={setDexterity} />
-      <p>Constitution: {constitution}</p> <DiceRoller setAtt={setConstitution} />
-      <p>Intelligence: {intelligence}</p> <DiceRoller setAtt={setIntelligence} />
-      <p>Wisdom: {wisdom}</p> <DiceRoller setAtt={setWisdom} />
-      <p>Charisma: {charisma}</p> <DiceRoller setAtt={setCharisma} />
-    </AttributeDiv>
+      <SingleAttribute>Strength: {strength}</SingleAttribute> <DiceRoller setAtt={setStrength} />
+      <SingleAttribute>Dexterity: {dexterity}</SingleAttribute> <DiceRoller setAtt={setDexterity} />
+      <SingleAttribute>Constitution: {constitution}</SingleAttribute> <DiceRoller setAtt={setConstitution} />
+      <SingleAttribute>Intelligence: {intelligence}</SingleAttribute> <DiceRoller setAtt={setIntelligence} />
+      <SingleAttribute>Wisdom: {wisdom}</SingleAttribute> <DiceRoller setAtt={setWisdom} />
+      <SingleAttribute>Charisma: {charisma}</SingleAttribute> <DiceRoller setAtt={setCharisma} />
+      </AttributeDiv>
+    </>
   );
 };
 
@@ -28,4 +31,14 @@ const AttributeDiv = styled.div`
   font-family: 'MedievalSharp', cursive;
   display: flex;
   flex-flow: wrap;
+  justify-content: center;
+`;
+
+const AttributeHeader = styled.p`
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1.5rem;
+  text-align: center;
+`;
+const SingleAttribute = styled.p`
+  width: 50%;
 `;
