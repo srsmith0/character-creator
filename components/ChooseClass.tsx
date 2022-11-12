@@ -2,26 +2,28 @@ import * as React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
-const ChooseClass = ({ klass, setKlass }) => {
+const ChooseClass = ({ klass, setKlass, klassData, setKlassData }) => {
   const [klasses, setKlasses] = React.useState([]);
-  const [klassData, setKlassData] = React.useState("Choose a class");
+  const [profs, setProfs] = React.useState([]);
 
-  //TODO: make modal giving information on classes, add class button.  Pick proficiencies from there
   React.useEffect(() => {
-    axios.get("https://www.dnd5eapi.co/api/classes/")
-    .then((res) => {
-      let klasses = res.data.results;
-      let klassArray = [];
-      //only takes name from GET request and creates new array
-      for (let i = 0; i < klasses.length; i++) {
-        klassArray.push(klasses[i].name);
-      };
-      setKlasses(klassArray);
-    });
+    getKlasses();
   }, []);
 
+  const getKlasses = () => {
+    axios.get("https://www.dnd5eapi.co/api/classes/")
+      .then((res) => {
+        let klasses = res.data.results;
+        let klassArray = [];
+        //only takes name from GET request and creates new array
+        for (let i = 0; i < klasses.length; i++) {
+          klassArray.push(klasses[i].name);
+        };
+        setKlasses(klassArray)
+      });
+};
+  
   const handleKlassChange = (e) => {
-    console.log(e.target.value)
     const newKlass = e.target.value;
     setKlass(newKlass);
     getKlassData(newKlass);
@@ -32,21 +34,18 @@ const ChooseClass = ({ klass, setKlass }) => {
     axios.get(`https://www.dnd5eapi.co/api/classes/${index}`)
       .then((res) => {
         setKlassData(res.data);
+        setProfs(res.data.proficiencies)
       }
-      );
+    );
   };
 
   const displayProficiencies = () => {
     if (typeof klassData === 'string') {
       return klassData;
     }
-    let pro = klassData.proficiencies
-    let profString = '';
-    pro.forEach(p =>
-      profString = profString + ', ' + p.name
-    )
-    //slice removes the first comma of list
-    return profString.slice(1);
+    //removes saving throws from proficiencies if listed
+    let formattedProfs = profs.filter(prof => prof.name.length < 17)
+    return formattedProfs.map(pro => <p key={pro.index}>{pro.name}</p>)
   };
           
   if (klasses.length === 0) {
@@ -55,7 +54,7 @@ const ChooseClass = ({ klass, setKlass }) => {
     return (
     <>
       <ChooseKlass>Choose Class:</ChooseKlass>
-      <ClassRadios>
+        <ClassRadios>
       {klasses.map((kla, index) => (
         <Klass key={kla}>
             <input
@@ -90,11 +89,13 @@ const ChooseKlass = styled.div`
 const ClassRadios = styled.div`
   display: flex;
   flex-flow: wrap;
+  width: 50%;
+  margin: 0 auto;
   text-align: center;
 `;
 
 const Klass = styled.div`
-  width: 25%;
+  width: 33%;
 `;
 
 const FormatText = styled.div`
@@ -104,4 +105,6 @@ const FormatText = styled.div`
 
 const Proficiencies = styled.div`
   text-align: center;
+  float: left;
+  width: 33%
 `;

@@ -14,16 +14,16 @@ const DiceRoller = ({setAtt}) => {
       rollValues.push(getRandomRoll());
     };
     //drops the lowest value roll and adds the 3 highest rolls
-    rollValues.sort().shift();
+    rollValues.sort();
     let value = rollValues[0] + rollValues[1] + rollValues[2]
     return setAtt(value)
   };
 
-  return <RollButton onClick={getAttributeValue}>Random Value</RollButton>;
+  return <RollButton onClick={getAttributeValue}>Roll Dice!</RollButton>;
 };
 
 const RollButton = styled.button`
-
+  border-radius: 10px;
 `
 
 export default DiceRoller;

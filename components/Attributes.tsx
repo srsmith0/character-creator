@@ -12,14 +12,14 @@ const Attributes = ({ klass }) => {
 
   return (
     <>
-    <AttributeHeader>Attributes:</AttributeHeader>
-    <AttributeDiv>
-      <SingleAttribute>Strength: {strength}</SingleAttribute> <DiceRoller setAtt={setStrength} />
-      <SingleAttribute>Dexterity: {dexterity}</SingleAttribute> <DiceRoller setAtt={setDexterity} />
-      <SingleAttribute>Constitution: {constitution}</SingleAttribute> <DiceRoller setAtt={setConstitution} />
-      <SingleAttribute>Intelligence: {intelligence}</SingleAttribute> <DiceRoller setAtt={setIntelligence} />
-      <SingleAttribute>Wisdom: {wisdom}</SingleAttribute> <DiceRoller setAtt={setWisdom} />
-      <SingleAttribute>Charisma: {charisma}</SingleAttribute> <DiceRoller setAtt={setCharisma} />
+      <AttributeDiv>
+        <AttributeHeader>Attributes:</AttributeHeader>
+          <SingleAttribute>Strength: {strength} <DiceRoller setAtt={setStrength} /> </SingleAttribute>
+          <SingleAttribute>Dexterity: {dexterity} <DiceRoller setAtt={setDexterity} /> </SingleAttribute>
+          <SingleAttribute>Constitution: {constitution} <DiceRoller setAtt={setConstitution} /> </SingleAttribute>
+          <SingleAttribute>Intelligence: {intelligence} <DiceRoller setAtt={setIntelligence} /> </SingleAttribute>
+          <SingleAttribute>Wisdom: {wisdom} <DiceRoller setAtt={setWisdom} /> </SingleAttribute>
+          <SingleAttribute>Charisma: {charisma}<DiceRoller setAtt={setCharisma} /> </SingleAttribute>
       </AttributeDiv>
     </>
   );
@@ -30,8 +30,10 @@ export default Attributes;
 const AttributeDiv = styled.div`
   font-family: 'MedievalSharp', cursive;
   display: flex;
-  flex-flow: wrap;
-  justify-content: center;
+  flex-flow: wrap column;
+  text-align: center;
+  float: left;
+  width: 33%;
 `;
 
 const AttributeHeader = styled.p`
@@ -39,6 +41,7 @@ const AttributeHeader = styled.p`
   font-size: 1.5rem;
   text-align: center;
 `;
-const SingleAttribute = styled.p`
-  width: 50%;
+const SingleAttribute = styled.span`
+  text-align: center;
+  margin-bottom: 1rem;
 `;
