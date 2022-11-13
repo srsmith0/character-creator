@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 const ChooseProficiencies = ({ klassData }) => {
   const [profs, setProfs] = React.useState('Choose a Class');
@@ -15,7 +16,7 @@ const ChooseProficiencies = ({ klassData }) => {
   }, [klassData]);
 
   const displayProficiencies = () => {
-    return profs === 'Choose a Class' ? profs : profs.map((p => <p key={p}>{p}</p>))
+    return profs === 'Choose a Class' ? profs : profs.map((p => <p key={p}>{p}</p>));
   };
   
   if (profs === undefined) {
@@ -28,11 +29,30 @@ const ChooseProficiencies = ({ klassData }) => {
   else {
     return (
       <>
+        <ProfsDiv>
+        <Header>Skills:</Header>
         {displayProficiencies()}
+        </ProfsDiv>
       </>
+        
     );
 
   };
 };
 
 export default ChooseProficiencies;
+
+const ProfsDiv = styled.div`
+  font-family: 'MedievalSharp', cursive;
+  display: flex;
+  flex-flow: wrap column;
+  text-align: center;
+  float: left;
+  width: 33%;
+`;
+
+const Header = styled.p`
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1.5rem;
+  text-align: center;
+`;
