@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 const ChooseProficiencies = ({ klassData }) => {
   const [profs, setProfs] = React.useState('Choose a Class');
+  const [choices, setChoices] = React.useState(0)
+  //add check ref to checkboxes to allow maximum selections
 
   React.useEffect(() => {
     console.log(klassData);
@@ -12,32 +14,39 @@ const ChooseProficiencies = ({ klassData }) => {
         (choice => choice.item.name.split('Skill: ')[1])
       )
       setProfs(choicesArray);
+      setChoices(klassData.proficiency_choices[0].choose)
     }
   }, [klassData]);
 
   const displayProficiencies = () => {
-    return profs === 'Choose a Class' ? profs : profs.map((p => <p key={p}>{p}</p>));
+    return profs === 'Choose a Class' ? profs : 
+      profs.map((prof, index) => (
+        <SkillBoxes key={prof}>
+            <input
+              value={prof}
+              id={prof}
+              name="skills"
+              type="checkbox"
+          />
+            <label key={index} htmlFor={prof}>
+            {prof}
+          </label>
+          </SkillBoxes>
+      ))
   };
   
-  if (profs === undefined) {
-    return (
-      <>
-        <p>Choose a class</p>
-      </>
-    );
-  }
-  else {
-    return (
-      <>
-        <ProfsDiv>
+  return (
+    <>
+      <ProfsDiv>
         <Header>Skills:</Header>
-        {displayProficiencies()}
-        </ProfsDiv>
-      </>
-        
-    );
+        <SubHeader>{!choices ? '' : `Choose ${choices} from: ` }</SubHeader>
+        <ListDiv>
+          {displayProficiencies()}
+          </ListDiv>
+      </ProfsDiv>
+    </>
+  );
 
-  };
 };
 
 export default ChooseProficiencies;
@@ -51,8 +60,25 @@ const ProfsDiv = styled.div`
   width: 33%;
 `;
 
-const Header = styled.p`
+const ListDiv = styled.div`
+  float: left;
+  columns: 2;
+`;
+
+const SkillBoxes = styled.div`
+  margin-bottom: 0.5rem;
+`;
+
+const Header = styled.h1`
   font-family: 'MedievalSharp', cursive;
   font-size: 1.5rem;
   text-align: center;
+`;
+
+const SubHeader = styled.p`
+  font-family: 'MedievalSharp', cursive;
+  font-size: 1rem;
+  text-align: center;
+  border-width: 3px;
+  border-color: black:
 `;
