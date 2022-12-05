@@ -4,7 +4,8 @@ import styled from 'styled-components';
 const ChooseProficiencies = ({ klassData }) => {
   const [profs, setProfs] = React.useState('Choose a Class');
   const [choices, setChoices] = React.useState(0)
-  //add check ref to checkboxes to allow maximum selections
+  //add check ref to checkboxes to allow maximum selections---create state of checkbox name length.
+    //create function to check maximum length allowed and check to state.  If over, uncheck the last box
 
   React.useEffect(() => {
     console.log(klassData);
@@ -18,21 +19,40 @@ const ChooseProficiencies = ({ klassData }) => {
     }
   }, [klassData]);
 
-  const displayProficiencies = () => {
-    return profs === 'Choose a Class' ? profs : 
-      profs.map((prof, index) => (
-        <SkillBoxes key={prof}>
-            <input
-              value={prof}
-              id={prof}
-              name="skills"
-              type="checkbox"
-          />
-            <label key={index} htmlFor={prof}>
-            {prof}
-          </label>
-          </SkillBoxes>
-      ))
+    // return (
+    //   <SkillBoxes>
+    //     {profs === 'Choose a Class' ? profs :
+    //       profs.map((prof, index) => (
+    //         <>
+    //     <input
+    //     value={prof}
+    //     key={prof}
+    //           id={prof}
+    //           name="skills"
+    //           type="checkbox"
+    //           onClick={ () => checkChoiceNumber()}
+    //       />
+    //         <label key={index} htmlFor={prof}>
+    //         {prof}
+    //           </label>
+    //           </>
+    //       ))
+    //     }
+    //     </SkillBoxes>)
+  };
+
+  const checkChoiceNumber = () => {
+    let checkboxes = document.getElementById('checkboxProfs').getElementsByTagName('skills');
+    console.log(checkboxes)
+    for (let i = 0; i < checkboxes.length; i++) {
+      let checkedCount = 0;
+      for (let i = 0; i < checkboxes.length; i++) {
+        checkedCount += (checkboxes[i].checked) ? 1 : 0;
+      }
+      if (checkedCount > choices) {
+        this.checked = false;
+      }
+    }
   };
   
   return (
@@ -40,7 +60,7 @@ const ChooseProficiencies = ({ klassData }) => {
       <ProfsDiv>
         <Header>Skills:</Header>
         <SubHeader>{!choices ? '' : `Choose ${choices} from: ` }</SubHeader>
-        <ListDiv>
+        <ListDiv id="checkboxProfs">
           {displayProficiencies()}
           </ListDiv>
       </ProfsDiv>
